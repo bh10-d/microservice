@@ -5,7 +5,7 @@ services:
   api:
     build:
       context: .
-    image: microservice
+    image: buihieu521/microservice
     env_file: docker-compose.env
     environment:
       SERVICES: api
@@ -22,7 +22,7 @@ services:
   greeter:
     build:
       context: .
-    image: microservice
+    image: buihieu521/microservice
     env_file: docker-compose.env
     environment:
       SERVICES: greeter
@@ -34,7 +34,7 @@ services:
   products:
     build:
       context: .
-    image: microservice
+    image: buihieu521/microservice
     env_file: docker-compose.env
     environment:
       SERVICES: products
@@ -43,6 +43,19 @@ services:
       - nats
     networks:
       - internal
+
+  demo:
+    build:
+      context: .
+    image: buihieu521/microserivce
+    env_file: docker-compose.env
+    environment:
+      SERVICES: demo
+    depends_on:
+      - nats
+    networks:
+      - internal
+
 
   mongo:
     image: mongo:4

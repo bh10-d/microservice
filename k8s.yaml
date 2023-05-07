@@ -144,7 +144,32 @@ spec:
         env:
           - name: SERVICES
             value: products
+---
 
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo
+spec:
+  selector:
+    matchLabels:
+      app: demo
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: demo
+    spec:
+      containers:
+      - name: demo
+        image: buihieu521/microservice
+        imagePullPolicy: IfNotPresent
+        envFrom:
+        - configMapRef:
+            name: common-env
+        env:
+          - name: SERVICES
+            value: demo
 ---
 #########################################################
 # MongoDB server
