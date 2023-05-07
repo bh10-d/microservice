@@ -47,7 +47,7 @@ services:
   demo:
     build:
       context: .
-    image: buihieu521/microserivce
+    image: buihieu521/microservice
     env_file: docker-compose.env
     environment:
       SERVICES: demo
@@ -55,7 +55,6 @@ services:
       - nats
     networks:
       - internal
-
 
   mongo:
     image: mongo:4

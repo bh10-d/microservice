@@ -19,7 +19,7 @@
 				<img class="logo" src="https://moleculer.services/images/logo/logo_with_text_horizontal_100h_shadow.png" /></a>
 			<nav>
 				<ul>
-					<li v-for="item in menu" :class="{ active: page == item.id}" @click="changePage(item.id)">{{ item }}</li>
+					<li v-for="item in menu" :class="{ active: page == item.id}" @click="changePage(item.id)">{{ item.caption }}</li>
 				</ul>
 			</nav>
 		</header>
@@ -94,6 +94,8 @@
 				<hr/>
 			<template v-for="(section, name) in filteredApis" :key="name">
 				<section v-if="section && section.length>0" :id="name">
+					<!-- {{name}} -->
+					<!-- <h1>{{getService(name)}}</h1> -->
 					<fieldset>
 						<legend>
 							{{ getService(name).fullName }}<span v-if="getService(name).version" class="badge light  m-x-xs">{{ getService(name).version }}</span>
